@@ -3,6 +3,15 @@ info:
   title: Marketing Service
   version: 1.0.0
   description: "This service is in charge of marketing operations"
+servers:
+  development:
+    url: 'dev:9092'
+    protocol: 'kafka'
+    bindings:
+      kafka:
+        schemaRegistryUrl: 'http://localhost:8080'
+        schemaRegistryVendor: 'apicurio'
+        bindingVersion: '0.4.0'
 channels:
   clients.events.notifications.onboarding-process:
     subscribe:
@@ -28,6 +37,13 @@ components:
       summary: Notifies that a new onboarding process is finished
       contentType: avro/binary
       schemaFormat: application/vnd.apache.avro+json;version=1.9.0
+      bindings:
+        kafka:
+          key:
+            type: string
+            description: 'Identification of the client'
+      headers:
+        $ref: '#/components/schemas/commonHeaders'
       payload:
         $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/schemas/onboarding-notification.avsc'
     ClientDataUpdated:
@@ -36,5 +52,34 @@ components:
       summary: Contains the current client data in order to consumers being able to create a read view
       contentType: avro/binary
       schemaFormat: application/vnd.apache.avro+json;version=1.9.0
+      bindings:
+        kafka:
+          key:
+            type: string
+            description: 'Identification of the client'
+      headers:
+        $ref: '#/components/schemas/commonHeaders'
       payload:
         $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/schemas/client-data.avsc'
+  schemas:
+    commonHeaders:
+      type: object
+      properties:
+        eventId:
+          type: string
+          description: 'Unique identifier of a message'
+        origin:
+          type: string
+          description: 'Origin of a message'
+        type:
+          type: string
+          description: 'Message type'
+        createdAt:
+          type: string
+          description: 'Message creation date (format ISO 8601)'
+        correlationId:
+          type: string
+          description: 'Identifier to correlate messages'
+        tags:
+          type: string
+          description: 'List of tags separated by commas'
