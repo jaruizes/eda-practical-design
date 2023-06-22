@@ -1,0 +1,50 @@
+asyncapi: 2.5.0
+info:
+  title: Data Quality Service
+  version: 1.0.0
+  description: "This service is in charge of validation of client data process"
+channels:
+  clients.events.notifications.onboarding-process:
+    subscribe:
+      operationId: listenNewOnboardingStarted
+      summary: Listens to a new onboarding process in order to validate the client documents
+      tags:
+        - name: Listen new onboarding process
+      message:
+        $ref: '#/components/messages/OnboardingStarted'
+  data-quality.events.notifications.validation-info-process:
+    publish:
+      operationId: notifyValidationProcessStatus
+      summary: Notifies the status of the validation process
+      tags:
+        - name: Notifies validation status
+      message:
+        oneOf:
+          - $ref: '#/components/messages/ValidationStarted'
+          - $ref: '#/components/messages/ValidationFinished'
+components:
+  messages:
+    OnboardingStarted:
+      name: onboardingStarted
+      title: Onboarding Started
+      summary: Notifies that a new onboarding process is started
+      contentType: avro/binary
+      schemaFormat: application/vnd.apache.avro+json;version=1.9.0
+      payload:
+        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/contracts/schemas/onboarding-notification.avsc'
+    ValidationStarted:
+      name: VvalidationStarted
+      title: Validation Started
+      summary: Notifies that a validation process is started
+      contentType: avro/binary
+      schemaFormat: application/vnd.apache.avro+json;version=1.9.0
+      payload:
+        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/contracts/schemas/data-quality-notification.avsc'
+    ValidationFinished:
+      name: validationFinished
+      title: Validation Finished
+      summary: Notifies that a validation process is finished
+      contentType: avro/binary
+      schemaFormat: application/vnd.apache.avro+json;version=1.9.0
+      payload:
+        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/contracts/schemas/data-quality-notification.avsc'

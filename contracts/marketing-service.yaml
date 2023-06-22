@@ -1,0 +1,40 @@
+asyncapi: 2.5.0
+info:
+  title: Marketing Service
+  version: 1.0.0
+  description: "This service is in charge of marketing operations"
+channels:
+  clients.events.notifications.onboarding-process:
+    subscribe:
+      operationId: listenNewOnboardingFinished
+      summary: Listens to the end of a new onboarding process
+      tags:
+        - name: Listen to new onboarding process
+      message:
+        $ref: '#/components/messages/OnboardingFinished'
+  clients.events.ecst.client-data:
+    subscribe:
+      operationId: listenClientData
+      summary: Listens to updates of client data
+      tags:
+        - name: Listen to client data
+      message:
+        $ref: '#/components/messages/ClientDataUpdated'
+components:
+  messages:
+    OnboardingFinished:
+      name: onboardingFinished
+      title: Onboarding Finished
+      summary: Notifies that a new onboarding process is finished
+      contentType: avro/binary
+      schemaFormat: application/vnd.apache.avro+json;version=1.9.0
+      payload:
+        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/contracts/schemas/onboarding-notification.avsc'
+    ClientDataUpdated:
+      name: clientDataUpdated
+      title: ClientDataUpdated
+      summary: Contains the current client data in order to consumers being able to create a read view
+      contentType: avro/binary
+      schemaFormat: application/vnd.apache.avro+json;version=1.9.0
+      payload:
+        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/contracts/schemas/client-data.avsc'

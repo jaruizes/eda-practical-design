@@ -1,0 +1,66 @@
+asyncapi: 2.5.0
+info:
+  title: Clients Service
+  version: 1.0.0
+  description: "This service is in charge of onboarding process and client data"
+channels:
+  clients.events.notifications.onboarding-process:
+    publish:
+      operationId: notifyOnboardingStatus
+      summary: Notifies the status of the onboarding process
+      tags:
+        - name: Update onboarding status
+      message:
+        oneOf:
+          - $ref: '#/components/messages/OnboardingStarted'
+          - $ref: '#/components/messages/OnboardingFinished'
+  data-quality.events.notifications.validation-info-process:
+    subscribe:
+      operationId: listenValidationStatus
+      summary: Listens to the status of the validation process
+      tags:
+        - name: Listen validation status
+      message:
+        $ref: '#/components/messages/ValidationFinished'
+  clients.events.ecst.client-data:
+    publish:
+      operationId: updateClientData
+      summary: Updates client data
+      tags:
+        - name: Update client data
+      message:
+        $ref: '#/components/messages/ClientDataUpdated'
+components:
+  messages:
+    OnboardingStarted:
+      name: onboardingStarted
+      title: Onboarding Started
+      summary: Notifies that a new onboarding process is started
+      contentType: avro/binary
+      schemaFormat: application/vnd.apache.avro+json;version=1.9.0
+      payload:
+        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/contracts/schemas/onboarding-notification.avsc'
+    OnboardingFinished:
+      name: onboardingFinished
+      title: Onboarding Finished
+      summary: Notifies that a new onboarding process is finished
+      contentType: avro/binary
+      schemaFormat: application/vnd.apache.avro+json;version=1.9.0
+      payload:
+        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/contracts/schemas/onboarding-notification.avsc'
+    ValidationFinished:
+      name: validationFinished
+      title: Validation Finished
+      summary: Notifies that a validation process is finished
+      contentType: avro/binary
+      schemaFormat: application/vnd.apache.avro+json;version=1.9.0
+      payload:
+        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/contracts/schemas/data-quality-notification.avsc'
+    ClientDataUpdated:
+      name: clientDataUpdated
+      title: ClientDataUpdated
+      summary: Contains the current client data in order to consumers being able to create a read view
+      contentType: avro/binary
+      schemaFormat: application/vnd.apache.avro+json;version=1.9.0
+      payload:
+        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/contracts/schemas/client-data.avsc'
