@@ -1,0 +1,6 @@
+version: '2'
+services:
+  apicurio:
+    image: apicurio/apicurio-registry-mem:2.4.3.Final
+    ports:
+      - 8080:8080
