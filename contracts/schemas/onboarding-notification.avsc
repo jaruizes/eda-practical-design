@@ -1,0 +1,13 @@
+{
+  "type":"record",
+  "name":"OnboardingNotification",
+  "namespace":"com.paradigma.contracts.schemas.onboarding",
+  "doc": "Schema for notifications about the onboarding process",
+  "fields":[
+    {
+      "name":"clientId",
+      "type":"string"
+      }
+  ]
+}
+

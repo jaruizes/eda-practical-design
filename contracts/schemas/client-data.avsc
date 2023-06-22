@@ -1,0 +1,51 @@
+{
+  "type":"record",
+  "name":"ClientData",
+  "namespace":"com.paradigma.contracts.schemas.clients",
+  "doc": "Client data",
+  "fields":[
+    {
+      "name":"clientId",
+      "type":"string"
+    },
+    {
+      "name":"personalData",
+      "type": {
+        "name": "PersonalData",
+        "type": "record",
+        "fields": [
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "lastname",
+            "type": "string"
+          },
+          {
+            "name": "birthdate",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name":"contactData",
+      "type": {
+        "name": "ContactData",
+        "type": "record",
+        "fields": [
+          {
+            "name": "email",
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ]
+}
+

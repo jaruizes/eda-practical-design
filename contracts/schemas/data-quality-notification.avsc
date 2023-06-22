@@ -1,0 +1,18 @@
+{
+  "type":"record",
+  "name":"DataQualityNotification",
+  "namespace":"com.paradigma.contracts.schemas.dataquality",
+  "doc": "Schema for notification about the data quality process",
+  "fields":[
+    {
+      "name":"clientId",
+      "type":"string"
+    },
+    {
+      "name":"result",
+      "type":["null","string"],
+      "default": null
+    }
+  ]
+}
+
