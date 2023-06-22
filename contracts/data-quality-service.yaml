@@ -31,7 +31,7 @@ components:
       contentType: avro/binary
       schemaFormat: application/vnd.apache.avro+json;version=1.9.0
       payload:
-        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/contracts/schemas/onboarding-notification.avsc'
+        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/schemas/onboarding-notification.avsc'
     ValidationStarted:
       name: VvalidationStarted
       title: Validation Started
@@ -39,7 +39,7 @@ components:
       contentType: avro/binary
       schemaFormat: application/vnd.apache.avro+json;version=1.9.0
       payload:
-        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/contracts/schemas/data-quality-notification.avsc'
+        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/schemas/data-quality-notification.avsc'
     ValidationFinished:
       name: validationFinished
       title: Validation Finished
@@ -47,4 +47,4 @@ components:
       contentType: avro/binary
       schemaFormat: application/vnd.apache.avro+json;version=1.9.0
       payload:
-        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/contracts/schemas/data-quality-notification.avsc'
+        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/schemas/data-quality-notification.avsc'

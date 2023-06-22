@@ -39,7 +39,7 @@ components:
       contentType: avro/binary
       schemaFormat: application/vnd.apache.avro+json;version=1.9.0
       payload:
-        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/contracts/schemas/onboarding-notification.avsc'
+        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/schemas/onboarding-notification.avsc'
     OnboardingFinished:
       name: onboardingFinished
       title: Onboarding Finished
@@ -47,7 +47,7 @@ components:
       contentType: avro/binary
       schemaFormat: application/vnd.apache.avro+json;version=1.9.0
       payload:
-        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/contracts/schemas/onboarding-notification.avsc'
+        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/schemas/onboarding-notification.avsc'
     ValidationFinished:
       name: validationFinished
       title: Validation Finished
@@ -55,7 +55,7 @@ components:
       contentType: avro/binary
       schemaFormat: application/vnd.apache.avro+json;version=1.9.0
       payload:
-        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/contracts/schemas/data-quality-notification.avsc'
+        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/schemas/data-quality-notification.avsc'
     ClientDataUpdated:
       name: clientDataUpdated
       title: ClientDataUpdated
@@ -63,4 +63,4 @@ components:
       contentType: avro/binary
       schemaFormat: application/vnd.apache.avro+json;version=1.9.0
       payload:
-        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/contracts/schemas/client-data.avsc'
+        $ref: 'https://raw.githubusercontent.com/jaruizes/eda-practical-design/main/schemas/client-data.avsc'
