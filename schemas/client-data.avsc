@@ -15,6 +15,10 @@
         "type": "record",
         "fields": [
           {
+            "name": "nif",
+            "type": "string"
+          },
+          {
             "name": "name",
             "type": "string"
           },
