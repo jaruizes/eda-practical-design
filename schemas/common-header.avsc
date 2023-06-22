@@ -1,0 +1,39 @@
+{
+  "type":"record",
+  "name":"ClientData",
+  "namespace":"com.paradigma.contracts.schemas.clients",
+  "doc": "Client data",
+  "fields":[
+    {
+      "name":"eventId",
+      "type":"string",
+      "doc": "Unique identifier of the message"
+    },
+    {
+      "name":"origin",
+      "type":"string",
+      "doc": "Message origin"
+    },
+    {
+      "name":"type",
+      "type":"string",
+      "doc": "Message type"
+    },
+    {
+      "name":"createdAt",
+      "type":"string",
+      "doc": "Message creation date (format ISO 8601)"
+    },
+    {
+      "name":"correlationId",
+      "type":"string",
+      "doc": "Correlation Id"
+    },
+    {
+      "name":"tags",
+      "type":"string",
+      "doc": "Tags separated by comma"
+    }
+  ]
+}
+
